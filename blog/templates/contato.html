@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}contato{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'site.css' %}">
+</head>
+
+<body>
+{% block content %}
+   
+
+    <div class="container">
+        <h2>Entre em Contato</h2>
+        <p>Preencha o formulário abaixo para entrar em contato conosco. Todos os campos são obrigatórios.</p>
+
+        <form method="POST" >
+            {% csrf_token %}
+            
+            <p>
+                <label for="id_nome">Nome:</label><br>
+                <input type="text" id="id_nome" name="nome" maxlength="100" required>
+            </p>
+            <p>
+                <label for="id_email">Email:</label><br>
+                <input type="email" id="id_email" name="email" maxlength="100" required>
+            </p>
+            <p>
+                <label for="id_telefone">Telefone:</label><br>
+                <input type="text" id="id_telefone" name="telefone" maxlength="15" required>
+            </p>
+            <p>
+                <label for="id_mensagem">Mensagem:</label><br>
+                <textarea id="id_mensagem" name="mensagem" maxlength="500" rows="5" required></textarea>
+            </p>
+            <button type="submit" class="save btn btn-default">Enviar</button>
+        
+        </form>
+    </div>
+{% endblock %}
+
+
+</body>
+</html>

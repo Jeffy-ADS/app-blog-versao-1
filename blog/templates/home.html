@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}
+Blog
+{% endblock %}
+{% block content %}
+    <h2>Sejam muito bem vindos!</h2>
+    <h3>Leia abaixo as mensagens mais recentes:</h3>
+
+    {% if message_list %}
+        <table class="message_list">
+            <thead>
+            <tr>
+                <th>Mensagens</th>
+                <th>Data</th>
+                <th>Hora</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for message in message_list %}
+                <tr>
+                    <td>
+                        {{ message.mensagem }}
+                    </td>
+                    <td>{{ message.log_date | date:'d M Y' }}</td>
+                    <td>{{ message.log_date | time:'H:i:s' }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma mensagem foi registrada. Use o Formulário para registro de <a href="{% url 'log' %}">mensagens</a>.</p>
+    {% endif %}
+{% endblock %}
